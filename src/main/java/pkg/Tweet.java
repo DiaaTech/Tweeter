@@ -1,4 +1,4 @@
-
+package pkg;
 public class Tweet {
 	private String email;
 	private String name;
@@ -6,14 +6,23 @@ public class Tweet {
 	private String tags;
 	private String date;
 	private int likes;
-	public Tweet(String email, String name, String body, String tags, String date, int likes) {
-		super();
+	private int id;
+	
+	
+	public Tweet(String email, String name, String body, String tags, String date, int likes, int id) {
 		this.email = email;
 		this.name = name;
 		this.body = body;
 		this.tags = tags;
 		this.date = date;
 		this.likes = likes;
+		this.id = id;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getEmail() {
 		return email;

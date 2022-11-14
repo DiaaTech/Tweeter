@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;1,700&family=Roboto:wght@100;300;400&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+}
+
+/*
+Css For Navigation
+*/
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  padding: 0px 60px;
+  background-color: rgb(45, 127, 233);
+}
+nav h1 {
+  font-size: 35px;
+  color: rgb(240, 233, 233);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+form {
+  background-color: rgba(10, 125, 233, 0.5);
+  width: max-content;
+  margin: auto;
+  height: max-content;
+  margin-top: 70px;
+  gap: 20px;
+  padding: 40px 50px;
+  box-shadow: 1px -1px 52px -4px rgba(7, 7, 7, 0.74);
+  -webkit-box-shadow: 1px -1px 52px -4px rgba(0, 0, 0, 0.74);
+  -moz-box-shadow: 1px -1px 52px -4px rgba(0, 0, 0, 0.74);
+}
+
+input[type='text'],
+textarea {
+  width: 500px;
+  height: 40px;
+  margin: 5px;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+}
+textarea {
+  height: 280px;
+  font-size: 20px;
+}
+.file {
+  width: 300px;
+  height: 40px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+}
+.btn {
+  width: 400px;
+  height: 30px;
+  margin: 10px;
+  height: 50px;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: rgb(36, 103, 247);
+  cursor: pointer;
+}
+.btn:hover {
+  transform: scale(1.06);
+  background-color: rgb(17, 17, 17);
+}
+
+.imageChoose {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  align-content: center;
+  justify-content: center;
+  width: 500px;
+  height: 40px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+}

@@ -1,3 +1,4 @@
+package pkg;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ public class UserDataBase {
 	String url = "jdbc:mysql://localhost:3306/tweeter";
 	
 	// constructor | Make connection
-	UserDataBase() throws Exception{
+	public UserDataBase() throws Exception{
 		Class.forName("com.mysql.jdbc.Driver");			// Register Driver
 		con = DriverManager.getConnection(url ,"root","851438"); // get Connection
 		st = con.createStatement();					// get statement	
@@ -84,7 +85,43 @@ public class UserDataBase {
 			return true;
 			}
 			catch (Exception e) {
+				e.printStackTrace();
 				return false;
 			}
+	}
+	public String getName(String email) throws SQLException {
+		String queryString = "select * from user where email = ?";
+		
+		PreparedStatement pr = con.prepareStatement(queryString);
+		pr.setString(1, email);
+
+		ResultSet rSet = pr.executeQuery();
+		
+		if(rSet.next()) {
+			return rSet.getString(2);
+		}
+		return "";
+	}
+	
+	public User getUser(String email) throws SQLException {
+		String queryString = "select * from user where email = ?";
+		
+		PreparedStatement pr = con.prepareStatement(queryString);
+		pr.setString(1, email);
+
+		ResultSet rSet = pr.executeQuery();
+		
+		if(rSet.next()) {
+
+			String name = rSet.getNString(2);
+			String bio = rSet.getNString(3);
+			String location = rSet.getNString(4);
+			String dateOfJoin = rSet.getNString(5);
+			String picture = rSet.getNString(6);
+			
+			User user = new User(email, name, bio, location, dateOfJoin, picture);
+			return user;
+		}
+		return null;
 	}
 }

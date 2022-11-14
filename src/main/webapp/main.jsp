@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import = "pkg.TweetDataBase"%>
+<%@page import = "pkg.Tweet"%>
+<%@page import="java.util.ArrayList"%>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,7 +25,7 @@
         </button>
       </form>
       <div class="profile">
-        <a href="#"><i class="fa-solid fa-user fa-2x"></i></a>
+        <a href="profile.jsp"><i class="fa-solid fa-user fa-2x"></i></a>
       </div>
     </nav>
 
@@ -32,140 +35,61 @@
       <div class="header">
         <h2>All Tweets</h2>
         <div class="post">
-          <a href="#"><i class="fa-solid fa-arrow-up fa-2x"></i></a>
+          <a href="addTweet.jsp"><i class="fa-solid fa-arrow-up fa-2x"></i></a>
           <p>Add Your Tweet</p>
         </div>
       </div>
 
       <!-- Tweet (Email, Name, Body, Tags, Likes, Date) -->
       <div class="tweets">
-        <!-- Tweet -->
+
+	<%
+	try{
+		TweetDataBase db = new TweetDataBase();
+    	ArrayList<Tweet> tweets = db.getAllTweets();
+    	if(tweets.size() == 0){
+    		
+	%>
+		<h1>No Tweets Found</h1>	
+	
+	<%
+    	}
+    	else{
+    		for(int i = 0; i<tweets.size(); i++){
+	%>
+
+       <!-- Tweet -->
         <div class="tweet">
           <!-- Person -->
           <div class="person">
-            <p class="name">🧑 Talha Tariq</p>
-            <p class="email">abc@gmail.com</p>
+            <p class="name">@ 
+            <% out.print(tweets.get(i).getName()); %>
+            </p>
+            <p class="email"><% out.print(tweets.get(i).getEmail()); %></p>
           </div>
           <!-- Body -->
           <div class="body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
-            temporibus?
+          <% out.print(tweets.get(i).getBody()); %>
           </div>
           <div class="footer">
           <div class="date">
             <button><i class="fa-regular fa-clock"></i></i></button>
-            <p>22-02-2022</p>
+            <p><% out.print(tweets.get(i).getDate()); %></p>
           </div>
           <!-- Likes -->
           <div class="likes">
             <button><i class="fa-regular fa-thumbs-up fa-2x"></i></button
-            ><span>20 Likes</span>
+            ><span><% out.print(tweets.get(i).getLikes()); %> Likes</span>
           </div>
         </div>
         </div>
 
-                <!-- Tweet -->
-                <div class="tweet">
-                  <!-- Person -->
-                  <div class="person">
-                    <p class="name">🧑 Talha Tariq</p>
-                    <p class="email">abc@gmail.com</p>
-                  </div>
-                  <!-- Body -->
-                  <div class="body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
-                    temporibus?
-                  </div>
-                  <div class="footer">
-                  <div class="date">
-                    <button><i class="fa-regular fa-clock"></i></i></button>
-                    <p>22-02-2022</p>
-                  </div>
-                  <!-- Likes -->
-                  <div class="likes">
-                    <button><i class="fa-regular fa-thumbs-up fa-2x"></i></button
-                    ><span>20 Likes</span>
-                  </div>
-                </div>
-                </div>
-
-
-                        <!-- Tweet -->
-        <div class="tweet">
-          <!-- Person -->
-          <div class="person">
-            <p class="name">🧑 Talha Tariq</p>
-            <p class="email">abc@gmail.com</p>
-          </div>
-          <!-- Body -->
-          <div class="body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
-            temporibus?
-          </div>
-          <div class="footer">
-          <div class="date">
-            <button><i class="fa-regular fa-clock"></i></i></button>
-            <p>22-02-2022</p>
-          </div>
-          <!-- Likes -->
-          <div class="likes">
-            <button><i class="fa-regular fa-thumbs-up fa-2x"></i></button
-            ><span>20 Likes</span>
-          </div>
-        </div>
-        </div>
-
-
-                <!-- Tweet -->
-                <div class="tweet">
-                  <!-- Person -->
-                  <div class="person">
-                    <p class="name">🧑 Talha Tariq</p>
-                    <p class="email">abc@gmail.com</p>
-                  </div>
-                  <!-- Body -->
-                  <div class="body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
-                    temporibus?
-                  </div>
-                  <div class="footer">
-                  <div class="date">
-                    <button><i class="fa-regular fa-clock"></i></i></button>
-                    <p>22-02-2022</p>
-                  </div>
-                  <!-- Likes -->
-                  <div class="likes">
-                    <button><i class="fa-regular fa-thumbs-up fa-2x"></i></button
-                    ><span>20 Likes</span>
-                  </div>
-                </div>
-                </div>
-
-                        <!-- Tweet -->
-        <div class="tweet">
-          <!-- Person -->
-          <div class="person">
-            <p class="name">🧑 Talha Tariq</p>
-            <p class="email">abc@gmail.com</p>
-          </div>
-          <!-- Body -->
-          <div class="body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
-            temporibus?
-          </div>
-          <div class="footer">
-          <div class="date">
-            <button><i class="fa-regular fa-clock"></i></i></button>
-            <p>22-02-2022</p>
-          </div>
-          <!-- Likes -->
-          <div class="likes">
-            <button><i class="fa-regular fa-thumbs-up fa-2x"></i></button
-            ><span>20 Likes</span>
-          </div>
-        </div>
-        </div>
-
+	<%
+    		}}}
+	catch(Exception e){
+		e.printStackTrace();
+	}
+	%>
     </div>
   </body>
 </html>

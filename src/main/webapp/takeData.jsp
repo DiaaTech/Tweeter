@@ -14,7 +14,7 @@
 
     <div class="container">
       <!-- Name, Bio, Picture, Location, DOJ -->
-      <form method = "POST" action = "UserDetail">
+      <form method = "POST" action = "UserDetail"  enctype="multipart/form-data">
         <h1>Fill Your Profile Details</h1>
         <input type="text" placeholder="Name" name="name" />
         <input type="text" placeholder="Bio" name="bio" />
