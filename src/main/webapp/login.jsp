@@ -14,7 +14,7 @@
           <li><a href="login.jsp">Home</a></li>
           <li><a href="about-us.jsp">About Us</a></li>
           <li><a href="contact-us.jsp">Contact Us</a></li>
-          <li><a href="login.jsp">Login</a></li>
+          <li><a href="index.jsp">Sign Up</a></li>
         </ul>
       </nav>
 
@@ -23,7 +23,7 @@
         <h2>Login to Tweeter</h2>
         <form action = "Login" method = "POST">
           <input type="email" placeholder="Email" name = "email"/>
-          <input type="text" placeholder="Password" name = "password"/>
+          <input type="password" placeholder="Password" name = "password"/>
           
            <%
                 if( request.getAttribute("logged") == "false"){

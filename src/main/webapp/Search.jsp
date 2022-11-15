@@ -28,18 +28,24 @@
         <a href="profile.jsp"><i class="fa-solid fa-user fa-2x"></i></a>
       </div>
     </nav>
-    
-    <%
+
+ <%
     	if(session.getAttribute("email") ==  null){
     		response.sendRedirect("login.jsp");
     	}
     %>
-
     <!-- Main Page for Tweets-->
     <div class="container">
       <!-- Header -->
       <div class="header">
-        <h2>All Tweets</h2>
+        <h2>All Tweets that contains the keyword 
+        <span style = "color:red;">
+         <%
+        	out.print(request.getParameter("search"));	
+        	%>
+        </span>
+       
+        </h2>
         <div class="post">
           <a href="addTweet.jsp"><i class="fa-solid fa-arrow-up fa-2x"></i></a>
           <p>Add Your Tweet</p>
@@ -51,8 +57,10 @@
 
 	<%
 	try{
+		String keyword = request.getParameter("search");
+		
 		TweetDataBase db = new TweetDataBase();
-    	ArrayList<Tweet> tweets = db.getAllTweets();
+    	ArrayList<Tweet> tweets = db.getAllSearchTweets(keyword);
     	if(tweets.size() == 0){
     		
 	%>
@@ -84,9 +92,8 @@
           </div>
           <!-- Likes -->
           <div class="likes">
-            <a href = "addLike?id=<%out.print(tweets.get(i).getId());%>"> <button ><i class="fa-regular fa-thumbs-up fa-2x"></i></button
+            <button ><i class="fa-regular fa-thumbs-up fa-2x"></i></button
             ><span><% out.print(tweets.get(i).getLikes()); %> Likes</span>
-            </a>
           </div>
         </div>
         </div>

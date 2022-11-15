@@ -109,4 +109,72 @@ public class TweetDataBase {
 			
 			return tweets;
 		}
+		
+
+		// function for reading all the tweets from the DB
+		public ArrayList<Tweet> getAllSearchTweets(String keyword) throws SQLException{
+			String query = "select * from tweet where body like \"%" + keyword + "%\"";
+			
+			ResultSet rs = st.executeQuery(query);
+			ArrayList<Tweet> tweets = new ArrayList<>();
+			
+			
+			while(rs.next()) {
+				String email = rs.getString(1);
+				String name = rs.getString(2);
+				String body = rs.getString(3);
+				String tags = rs.getString(4);
+				int likes = rs.getInt(5);
+				String date = rs.getString(6);
+				int id = rs.getInt(7);
+				
+				Tweet newTweet = new Tweet(email, name, body, tags, date, likes, id);
+				tweets.add(newTweet);
+			}
+			
+			return tweets;
+		}
+		public void deleteTweet(int id) throws SQLException {
+			String query = "delete from tweet where id = ?";
+			
+			PreparedStatement pr = con.prepareStatement(query);
+			pr.setInt(1, id);
+			
+			pr.executeUpdate();			
+			
+		}
+		
+		// for counting how many likes the tweet has
+		public int getTweetLike(int id) throws SQLException{
+			String query = "select * from tweet where id = ?";
+			PreparedStatement pr = con.prepareStatement(query);
+
+			
+			pr.setInt(1, id);
+			
+			ResultSet rs = pr.executeQuery();
+			
+			int count = 0;
+			while(rs.next()) {
+				return rs.getInt(5);
+			}
+			
+			return 0;
+		}
+		
+		// for updating the tweet likes
+		public void updateTweetLikes(int id) throws SQLException {
+			String query = "UPDATE tweet SET likes = ? WHERE id = ?";
+			int likes = getTweetLike(id);
+			likes++;
+			
+			PreparedStatement pr = con.prepareStatement(query);
+			pr.setInt(1, likes);
+			pr.setInt(2, id);
+			
+			pr.executeUpdate();			
+			
+		}
+		
 }
+

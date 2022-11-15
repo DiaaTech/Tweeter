@@ -19,14 +19,15 @@
           <li><a href="login.jsp">Login</a></li>
         </ul>
       </nav>
+   		
 
       <!-- Form -->
       <div class="signup">
         <h2>Sign up to join our community</h2>
         <form action = "SignUp" method = "POST">
           <input type="email" placeholder="Email" name = "name" />
-          <input type="text" placeholder="Password" name = "password"/>
-          <input type="text" placeholder="Confirm Password" name = "cnpassword" />
+          <input type="password" placeholder="Password" name = "password"/>
+          <input type="password" placeholder="Confirm Password" name = "cnpassword" />
               
             <%
                 if( request.getAttribute("error") == "true"){

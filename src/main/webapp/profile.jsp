@@ -20,9 +20,14 @@
   <body>
     <nav>
       <h1><a href = "main.jsp">Tweeter</a></h1>
-      <button>LogOut</button>
+      <a href = "logout"><button>LogOut</button></a>
     </nav>
 
+ <%
+    	if(session.getAttribute("email") ==  null){
+    		response.sendRedirect("login.jsp");
+    	}
+    %>
 <% 
 	try{
 
@@ -41,7 +46,7 @@
     <div class="person">
    
       <div class="image">
-        <img src="<% out.print(filePath); %>" alt="Profile Picture" />
+        <img src="images/<% out.print(user.getImage()); %>" alt="Profile Picture" />
       </div>
       <h2>
       	<% out.print(user.getName()); %>     	
@@ -90,9 +95,9 @@
           </div>
           <!-- Likes -->
           <div class="likes">
-            <button class="delete"><i class="fa-solid fa-trash fa-2x"></i></button>
+          <a href = "Delete?id=<%out.print(tweets.get(i).getId());%>"><button class="delete"><i class="fa-solid fa-trash fa-2x"></i></button></a>
             <button><i class="fa-regular fa-thumbs-up fa-2x"></i></button
-            ><span>   <% out.print(tweets.get(i).getLikes()); %> Likes</span>
+            ><span>  <% out.print(tweets.get(i).getLikes()); %> Likes</span>
           </div>
         </div>
         </div>

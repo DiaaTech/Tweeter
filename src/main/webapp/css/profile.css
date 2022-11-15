@@ -23,6 +23,12 @@ nav h1 {
   color: rgb(240, 233, 233);
 }
 
+nav h1 a{
+  font-size: 35px;
+  color: rgb(240, 233, 233);
+  text-decoration: none;
+}
+
 nav button {
   background-color: rgb(255, 255, 255);
   font-size: 20px;
@@ -212,4 +218,8 @@ nav button {
 }
 .stats button:hover {
   transform: scale(1.1);
+}
+a{
+	text-decoration: none;
+	color:white;
 }

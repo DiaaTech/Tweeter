@@ -11,10 +11,10 @@
     <nav>
       <h1>Tweeter</h1>
       <ul>
-        <li><a href="login.html">Home</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="login.jsp">Home</a></li>
+        <li><a href="about-us.jsp">About Us</a></li>
+        <li><a href="contact-us.jsp">Contact Us</a></li>
+        <li><a href="login.jsp">Login</a></li>
       </ul>
     </nav>
     <h1>Contact Us</h1>
